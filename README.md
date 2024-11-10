@@ -25,4 +25,4 @@ Este proyecto es el frontend de una aplicación web para la gestión de inventar
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tuusuario/inventario-bar-frontend.git
+   git clone https://github.com/ldromeromo/angular-emprendimiento-bar
