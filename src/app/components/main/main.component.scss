@@ -1,0 +1,38 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    padding: 20px; 
+    z-index: 1000;
+  }
+  
+  .loading-content {
+    text-align: center;
+    width: 100%; /* Para que el contenido sea más amplio */
+    padding: 0 10%; /* Añadir un margen a los lados para centrar mejor */
+    color: #333;
+  }
+  
+  p-progressBar {
+    margin-bottom: 15px;
+  }
+
+  .custom-progress-bar {
+    width: 100%;  /* Ajusta el ancho aquí */
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // min-height: 100vh; 
+    padding: 20px; 
+  }

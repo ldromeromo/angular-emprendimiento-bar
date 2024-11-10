@@ -1,0 +1,35 @@
+<p-table   
+  [value]="historicalLeads"          
+  [paginator]="true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10, 20, 50]"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+      <h5 class="m-0">Inventario</h5>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>                        
+      <th>Id producto</th>                        
+      <th>Nombre</th>                        
+      <th>Referencia</th>                        
+      <th>cantidad_actual</th>                        
+      <th>Precio</th>                        
+      <th pSortableColumn="created_at">Hora de inyección <p-sortIcon field="created_at"></p-sortIcon></th>                                                                                            
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-historical>
+    <tr>
+      <td>{{historical.id_producto}}</td>
+      <td>{{historical.nombre_producto}}</td>
+      <td>{{historical.referencia}}</td>
+      <td>{{historical.cantidad_actual}}</td>
+      <td>{{historical.precio}}</td>
+      <td>{{historical.created_at | date : 'medium'}}</td>                                          
+    </tr>
+  </ng-template>
+</p-table>

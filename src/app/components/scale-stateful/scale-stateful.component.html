@@ -1,0 +1,82 @@
+
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="loading-content">
+    <p-progressBar mode="indeterminate" [style]="{'width': '100%'}"></p-progressBar>
+    <p><br>Cargando datos...</p>
+  </div>
+</div>
+
+<div *ngIf="isUserAuthorized && !isLoading" class="grid">
+  <div class="col-12">
+    <div class="card md:0"> 
+      <div class="card p-fluid">
+        <h5>Escalamiento de ambientes de desarrollo</h5> <br>
+        <form [formGroup]="registroForm">
+          <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-4">
+              <label htmlFor="cluster">Cluster</label>
+              <p-dropdown 
+                [options]="cluster" 
+                formControlName="cluster" 
+                optionLabel="label" 
+                optionValue="value" 
+                placeholder="Seleccionar Cluster">
+              </p-dropdown>
+            </div>
+            <div class="field col-12 md:col-4">
+              <label htmlFor="namespace">Namespace</label>
+              <p-dropdown 
+                [options]="namespace" 
+                formControlName="namespace" 
+                optionLabel="label" 
+                optionValue="value" 
+                placeholder="Seleccionar Namespace">
+              </p-dropdown>
+            </div>
+            <div class="field col-12 md:col-4">
+              <label htmlFor="stateful">Stateful Sets</label>
+              <p-dropdown 
+                [options]="stateful" 
+                formControlName="stateful" 
+                optionLabel="label" 
+                optionValue="value" 
+                placeholder="Seleccionar Stateful">
+              </p-dropdown>
+            </div>
+            <div class="field col-12 md:col-6">
+              <button pButton type="button" label="Activar" (click)="escalado(1)"></button>
+            </div>
+            <div class="field col-12 md:col-6">
+              <button pButton type="button" label="Desactivar" (click)="escalado(0)"></button>
+            </div>
+          </div>
+        </form>
+        
+        <p-dialog 
+          header="Información" 
+          [(visible)]="displayDialog" 
+          [modal]="true" 
+          [closable]="true" 
+          [resizable]="false" 
+          [dismissableMask]="true"
+          [style]="{'width': '300px'}">
+          
+          <div class="p-d-flex p-jc-center">
+            <p>{{ dialogMessage }}</p>
+          </div>
+          
+          <div class="p-d-flex p-jc-center" style="margin-top: 20px;">
+            <button pButton type="button" label="Cerrar" (click)="displayDialog = false"></button>
+          </div>
+      </p-dialog>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mostrar un mensaje si el usuario no está autorizado -->
+<div *ngIf="!isUserAuthorized" class="flex-container">
+  <div class="alert alert-danger" role="alert">
+    <strong>Error!</strong> No puede acceder a este módulo, permisos insuficientes.
+  </div>
+</div>

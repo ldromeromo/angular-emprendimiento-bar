@@ -1,0 +1,18 @@
+<ul class="layout-menu" style="display: flex; flex-direction: column; height: 100%;">
+    <ng-container *ngFor="let item of model; let i = index;">
+      <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+      <li *ngIf="item.separator" class="menu-separator"></li>
+    </ng-container>
+  
+    <!-- Espaciador flexible para empujar el botón de salir hacia abajo -->
+    <li style="flex-grow: 1;"></li>
+  
+    <!-- Botón de Salir al final del menú, centrado -->
+    <li class="menu-item" style="display: flex; justify-content: center;">
+      <a [routerLink]="['/login']" class="menu-link" style="text-align: center;">
+        <i class="pi pi-fw pi-sign-out"></i>
+        <span>Salir</span>
+      </a>
+    </li>
+  </ul>
+  
